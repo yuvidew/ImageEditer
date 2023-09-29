@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/regular.min.css" integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA==" crossorigin="anonymous" referrerpolicy="no-referrer" /><script src="https://kit.fontawesome.com/f7fe29f0bc.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2015/12/22/04/00/edit-1103599_1280.png" type="image/png">
+    <title>Image Editer</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+        * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        -webkit-transition: .2s linear;
+        transition: .2s linear;
+        }
+
+        input,button{
+            cursor: pointer;
+        }
+
+        input::placeholder{
+            color: rgb(215, 218, 221);
+        }
+
+        html {
+        font-size: 62.5%;
+        }
+        body{
+            background: #244d4d;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header{
+            width: 65%;
+            color: rgb(215, 218, 221);
+            padding: 1.5rem;
+            border-radius: .1rem;
+            padding: 2rem;
+
+        }
+        h1{
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        h2{
+            margin-bottom: 1rem;
+            font-size: 1.7rem;
+        }
+
+        section{
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sectiuhytoij{
+            flex: 1 1 30rem;
+            padding: 1rem;
+            width: 30%;
+            border: 2px solid #0a0a0a;
+            height: 37rem;
+            overflow: hidden;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .sectiuhytoij::-webkit-scrollbar{
+            display: none;
+        }
+
+        .option{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .sectiuhytoij button{
+            text-transform: capitalize;
+            flex: 1 1 10rem;
+            padding: 1rem 1.5rem;
+            border: 1.5px solid #0a0a0a;
+            /* background-color: rgb(215, 218, 221); */
+        }
+        .incries{
+            margin-top:6rem ;
+        }
+
+        #incries2,#incries3,#incries4{
+            display: none;
+        }
+
+        .incries ul{
+            text-transform: capitalize;
+            list-style: none;
+            display: flex;
+            justify-content: space-between ;
+            margin-bottom: .5rem;
+            font-size: 1.4rem;
+        }
+
+        .incries input{
+            background-color: rgb(215, 218, 221);
+            width: 100%;
+            accent-color: #244d4d;
+            padding: 0;
+        }
+
+        .RandF_button{
+            width: 100%;
+            justify-content: space-between;
+            gap: 2rem;
+            /* margin-bottom: 1rem; */
+        }
+        
+        .RandF_button button{
+            background: transparent;
+            padding: 1.5rem;
+            width: 24%;
+
+        }
+
+        .select_image{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .select_image button{
+            padding: 1rem 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .select_image .reset button{
+            background: none;
+            border: 1.5px solid #0a0a0a;
+            color: #0a0a0a;
+        }
+
+        .select_image .seclect_save button:nth-child(1){
+            background: #0a0a0a;
+            color: #0a0a0a;
+            
+        }
+
+        .select_image .seclect_save button:nth-child(2){
+            background: #242F98;
+            color: #0a0a0a;
+            
+        }
+
+        .image{
+            flex: 1 1 60rem;
+            background: #ffffff;
+            width: 70%;
+            height: 36.9rem;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        
+
+        .image img{
+            width: 100%;
+        }
+
+       
+
+        .text_edit #image_text{
+            width: 60.5%;
+            padding: 1rem;
+            background-color: transparent;
+            /* border: 1.5px solid rgb(215, 218, 221); */
+            color: rgb(215, 218, 221);
+        }
+
+         #text_size{
+            background-color: rgb(215, 218, 221);
+            width: 100%;
+            accent-color: #244d4d;
+            padding: 0;
+        }
+
+        .text_edit ul{
+            text-transform: capitalize;
+            list-style: none;
+            display: flex;
+            justify-content: space-between ;
+            margin-bottom: .5rem;
+            font-size: 1.4rem;
+        }
+
+        #text{
+            position: absolute;
+            bottom: 8rem;
+            left: 5rem;
+            color: #0A1428;
+            font-size: 2rem;
+            z-index: 2;
+        }
+
+        .active{
+            background: #244d4d;
+            color: #eaf3f3;
+        }
+
+        .filter{
+            margin-top: 4rem;
+        }
+
+        .filter input{
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .filter ul li {
+            font-size: 1.4rem;
+        }
+
+        .filter input{
+            accent-color: #244d4d;
+        }
+    </style>    
+</head>
+<body>
+    <header style="background: #fff;">
+        <h1 style="color: #0a0a0a;">Easy Image Editer</h1>
+        <section>
+            <div class="image">
+                <p id="text"></p>
+                <img src="" id="profile-pic" alt="" >
+    
+            </div>
+            <div class="sectiuhytoij">
+                <h2 style="text-align: center; font-size: 2rem; color: #0a0a0a; margin-top: 1rem;">Filter Tools</h2>
+                <div class="option" style="margin-top: 3rem;">
+                    <button id="Brightness" class="active">Brightness</button>
+                    <button id="saturation">saturation</button>
+                    <button id="inversion">inversion</button>
+                    <button id="grayscale">grayscale</button>
+                </div>
+                
+                <div class="filter">
+                    <ul style="display: flex; justify-content: space-between; list-style: none ; align-items: center;">
+                        <li><h3 style="color: #0a0a0a;">Brightness</h3></li>
+                        <li><p style="color: #0a0a0a;">0%</p></li>
+                    </ul>
+                
+                    <input type="range">
+                </div>
+                <div class="rotate_flip" style="margin-top: 3rem;">
+                    <div class="RandF_button">
+                        <button id="left"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+                        <button id="right"><i class="fa fa-undo" aria-hidden="true"></i></button>
+                        <button id="horisontal"><i class="fa fa-text-width" aria-hidden="true"></i></button>
+                        <button id="vartical"><i class="fa fa-text-height" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                
+            </div>
+        </section>
+        <div class="select_image">
+            <div class="seclect_save">
+                <label for="input-file" style="background-color:#0a0a0a ;cursor: pointer; text-align: center; padding:.9rem 1.5rem; color: #fff; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-transform: uppercase; font-size: 1.5rem;">Update image</label>
+                <input type="file" accept="image/jpeg, image/png, image/jpg," id="input-file" style="display: none;">
+                &nbsp;
+                <button id="Download_bth">save image</button>
+            </div>
+            <div class="reset">
+                <button id="resetfilter">reset filter</button>
+            </div>
+        </div>
+    </header>
+    <script>
+        const moreoption = document.querySelectorAll(".option button"),
+        retatoption = document.querySelectorAll(".RandF_button button"),
+        filtername = document.querySelector(".filter h3"),
+        filterrange = document.querySelector(".filter input"),
+        Editimage = document.querySelector(".image img"),
+        filtervalue = document.querySelector(".filter p"),
+        resetFilter = document.getElementById("resetfilter");
+        
+
+        let Brightness = 100 , saturation = 100 , inversion = 0 , grayscale = 0;
+        let rotate = 0, filpHorizontal = 1, flipVertical = 1;
+       
+
+        const profilepic = document.getElementById("profile-pic");
+        const inputFile =  document.getElementById("input-file");
+        const download_img = document.querySelector("#Download_bth");
+
+        
+        
+        inputFile.onchange = function(){
+            profilepic.src = URL.createObjectURL(inputFile.files[0]);
+            // profilepic.style.filter
+        }
+
+        retatoption.forEach(RandF_button => {
+            RandF_button.addEventListener("click", () => {
+                if(RandF_button.id === "left"){
+                    rotate -=90 
+
+                }else if(RandF_button.id === "right"){
+                    rotate +=90 
+                }else if(RandF_button.id === "horisontal"){
+                    filpHorizontal = filpHorizontal === 1 ? -1 : 1;
+                }else {
+                    flipVertical = flipVertical === 1 ? -1 : 1;
+                }
+                applyFilter();
+            })
+        });
+
+        moreoption.forEach(option => {
+            option.addEventListener("click", () => {
+                document.querySelector(".sectiuhytoij .active").classList.remove("active")
+                option.classList.add("active")
+
+                filtername.innerText = option.innerText;
+
+                if(option.id === "Brightness"){
+                    filterrange.max = "200"
+                    filtervalue.innerHTML= `${Brightness}%`;
+                    filterrange.value = Brightness 
+                }else if(option.id === "saturation"){
+                    filterrange.max = "200" 
+                    filtervalue.innerHTML= `${saturation}%`;
+                    filterrange.value = saturation 
+                }else if(option.id === "inversion"){
+                    filterrange.max ="100" 
+                    filterrange.value =  inversion  
+                    filtervalue.innerHTML= `${inversion}%`;
+                }else {
+                    filterrange.max = "100"
+                    filtervalue.innerHTML= `${grayscale}%`;
+                    filterrange.value =  grayscale 
+                }
+            })
+        });
+
+
+        
+        const filterrangechange = () =>{
+            filtervalue.innerHTML= `${filterrange.value}%`;
+
+            const selectedFilter = document.querySelector(".sectiuhytoij .active");
+
+            if(selectedFilter.id === "Brightness"){
+                Brightness = filterrange.value
+            }else if(selectedFilter.id === "saturation"){
+                saturation = filterrange.value
+            }else if(selectedFilter.id === "inversion"){
+                inversion = filterrange.value
+            }else {
+                grayscale = filterrange.value
+            }
+
+            applyFilter();
+        }
+        const applyFilter = () =>{
+            Editimage.style.filter = `brightness(${Brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+            Editimage.style.transform = `rotate(${rotate}deg) scale(${filpHorizontal}, ${flipVertical})`;
+        }
+
+        download_img.addEventListener("click",  () =>{
+            const canvas = document.createElement("canvas")
+            const ctx = canvas.getContext("2d")
+
+            ctx.filter = `brightness(${Brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
+            ctx.drawImage(profilepic, 0, 0, canvas.width, canvas.height);
+            // ctx.download = "home.jpg";
+            document.body.appendChild(canvas)
+        });
+
+        
+
+        const resetfuction = () => {
+            Brightness = 100 ;
+             saturation = 100 ;
+             inversion = 0 ;
+             grayscale = 0;
+
+             rotate = 0; filpHorizontal = 1; flipVertical = 1;
+             applyFilter();
+        }
+
+
+
+        filterrange.addEventListener("input", filterrangechange);
+        resetFilter.addEventListener("click", resetfuction);
+    </script>
+</body>
+</html>
